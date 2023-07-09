@@ -53,13 +53,13 @@ class Vector2:
     def __neg__(self):
         return Vector2(-self.x, -self.y)
 
-    def __max__(self, other):
+    def max(self, other):
         if isinstance(other, Vector2):
             return Vector2(max(self.x, other.x), max(self.y, other.y))
 
         return Vector2(max(self.x, other), max(self.y, other))
 
-    def __min__(self, other):
+    def min(self, other):
         if isinstance(other, Vector2):
             return Vector2(min(self.x, other.x), min(self.y, other.y))
 
@@ -73,9 +73,9 @@ class Vector2:
 
     def __mod__(self, other):
         if isinstance(other, Vector2):
-            return Vector2(self.x % other.y, self.y % other.y)
+            return Vector2(math.fmod(self.x, other.x), math.fmod(self.y, other.y))
 
-        return Vector2(self.x % other, self.y % other)
+        return Vector2(math.fmod(self.x, other), math.fmod(self.y, other))
 
     def dot(self, other):
         return self.x * other.x + self.y * other.y

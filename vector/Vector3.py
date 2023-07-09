@@ -54,13 +54,13 @@ class Vector3:
     def __neg__(self):
         return Vector3(-self.x, -self.y, -self.z)
 
-    def __max__(self, other):
+    def max(self, other):
         if isinstance(other, Vector3):
             return Vector3(max(self.x, other.x), max(self.y, other.y), max(self.z, other.z))
 
         return Vector3(max(self.x, other), max(self.y, other), max(self.z, other))
 
-    def __min__(self, other):
+    def min(self, other):
         if isinstance(other, Vector3):
             return Vector3(min(self.x, other.x), min(self.y, other.y), min(self.z, other.z))
 
@@ -74,9 +74,9 @@ class Vector3:
 
     def __mod__(self, other):
         if isinstance(other, Vector3):
-            return Vector3(self.x % other.x, self.y % other.y, self.z % other.z)
+            return Vector3(math.fmod(self.x, other.x), math.fmod(self.y, other.y), math.fmod(self.z, other.z))
 
-        return Vector3(self.x % other, self.y % other, self.z % other)
+        return Vector3(math.fmod(self.x, other), math.fmod(self.y, other), math.fmod(self.z, other))
 
     def dot(self, other):
         return self.x * other.x + self.y * other.y + self.z * other.z
